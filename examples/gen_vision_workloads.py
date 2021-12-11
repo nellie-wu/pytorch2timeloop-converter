@@ -25,13 +25,10 @@ def gen_imagenet_workloads(model_name, batch_size, output_dir, convert_linear=Tr
     device = 'cuda:0' if torch.cuda.is_available() else "cpu"
     model.to(device)
 
-    input_shape = (3, 224, 224)
-    batch_size = 1
-
     exception_module_names = exception_modules
 
     # Now, convert!
-    pytorch2timeloop.convert_model(model, input_shape, batch_size, model_name, output_dir, convert_linear, exception_module_names)
+    pytorch2timeloop.convert_model(model, input_tensor.shape, batch_size, model_name, output_dir, convert_linear, exception_module_names)
 
 def main(args):
     
