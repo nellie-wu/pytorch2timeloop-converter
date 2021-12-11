@@ -153,7 +153,7 @@ def convert_model(model, input_size, batch_size, model_name, save_dir, convert_f
     for i in range(0, len(layer_list)):
         problem = layer_list[i]
         layer_type = problem[0]
-        file_name = model_name + '_' + 'layer' + str(i+1) + '.yaml'
+        file_name =  model_name + '_' + 'layer' + f"{i+1:02}" + '.yaml'
         file_path = os.path.abspath(os.path.join(save_dir, model_name, file_name))
         if layer_type == 'norm-conv' or layer_type == 'linear':
             rewrite_workload_bounds(file_path, problem)
